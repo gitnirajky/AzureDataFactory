@@ -5,7 +5,7 @@ Azure data factory related connectors/authentication methods
 
 #1.1 Authentication Method: Managed Identity
 
-Managed identity is great way to authentication data facory to connect to resources as you dont have to store connection string/key in code. Azure Data factory supports MI authenication. Managed Identity can directly authenicate with SQL server database.
+Managed identity is great way to authentication data facory to connect to resources as you dont have to store connection string/key in code. Azure Data factory supports MI authenication (you dont have create an identity separately). Managed Identity can directly authenicate with SQL server database.
     
     --Setting up managed identoty permissions in Azure Sql database
     
