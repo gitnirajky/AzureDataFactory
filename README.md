@@ -6,7 +6,7 @@
 
 Managed identity is great way to authentication data factory to connect to resources as you don't have to store connection string/key in code. Azure Data factory supports MI authentication (you don't have create an identity separately). Managed Identity can directly authenticate with SQL server database.
 
-    --Setting up managed identity/sercice principal permissions in Azure Sql database
+    --Setting up managed identity/service principal permissions in Azure Sql database
     
     --Note: Setting up permissions would require you to connect Az sql DB with AD authentication. If you have not setup before, please setup, you can use portal--> [Azure SQL Server   resource] --> In Overview tab--> essentials section--> set Active Directory admin option.
     
