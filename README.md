@@ -1,4 +1,4 @@
-# AzureDataFactory- azure SQL linked service authenication method (without storing connection string/key in code)
+# AzureDataFactory- azure SQL linked service authenication methods (without storing connection string/key in code)
 Azure data factory related connectors/authentication methods
 
 #1. Connecting to Azure SQL Database
@@ -33,7 +33,7 @@ Service principal is a great way to have one single principal/crentials to be us
 Azure Active Directory--> App registrations -->New Registration (it can signle or multitenant)
 Once App registration is done generate a secret from Certificates & Secret blade.
 Now secret (password) can be stored in Az key vault.
-Use prior step to retrive secret key
+Use step 1.1 to grant permission to app/service principal on azure SQL database and 1.2 to retrive secret key
 
 
 #1.3 Connection sting in Azure key vault
