@@ -1,13 +1,62 @@
-# Linked service sample with Service Pricipal authentication type
+#linked service for Az Key vault
+{
+    "name": "AzureKeyVaultlinkedservice",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureKeyVault",
+        "typeProperties": {
+            "baseUrl": "https://<KeyValut name>.vault.azure.net/"
+        }
+    }
+}
+
+# Linked service sample with Managed Identity authentication type
 
 {
-    "name": "AzureSqlDatabase1",
+    "name": "AzureSqlDatabaselinkedservice_ManagedID",
     "type": "Microsoft.DataFactory/factories/linkedservices",
     "properties": {
         "annotations": [],
         "type": "AzureSqlDatabase",
         "typeProperties": {
-            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=<Azure SQL Server>.database.windows.net;Initial Catalog=azuresqldbde",
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=<Az SQL server>.database.windows.net;Initial Catalog=azuresqldb"
+        }
+    }
+}
+
+#linked service sample with SQL authentication type
+
+{
+    "name": "AzureSqlDatabaselinkedservice_SQLAuth",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=<Az SQL server>.database.windows.net;Initial Catalog=azuresqldb;User ID=username",
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "AzureKeyVaultlinkedservice",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "azsqlpasswordkeyforusername"
+            }
+        }
+    }
+}
+
+# Linked service sample with Service Pricipal authentication type
+
+{
+    "name": "AzureSqlDatabaselinkedservice_ServicePrincipal",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=<Azure SQL Server>.database.windows.net;Initial Catalog=azuresqldb",
             "servicePrincipalId": "<app ID>",
             "servicePrincipalKey": {
                 "type": "AzureKeyVaultSecret",
