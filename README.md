@@ -1,4 +1,4 @@
-# AzureDataFactory
+# AzureDataFactory- azure SQL linked service authenication method
 Azure data factory related connectors/authentication methods
 
 #1. Connecting to Azure SQL Database
