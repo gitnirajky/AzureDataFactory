@@ -1,0 +1,23 @@
+# Linked service sample with Service Pricipal authentication type
+
+{
+    "name": "AzureSqlDatabase1",
+    "type": "Microsoft.DataFactory/factories/linkedservices",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=<Azure SQL Server>.database.windows.net;Initial Catalog=azuresqldbde",
+            "servicePrincipalId": "<app ID>",
+            "servicePrincipalKey": {
+                "type": "AzureKeyVaultSecret",
+                "store": {
+                    "referenceName": "AzureKeyVaultlinkedservice",
+                    "type": "LinkedServiceReference"
+                },
+                "secretName": "appserviceprincipal"
+            },
+            "tenant": "<AD Tenant ID>"
+        }
+    }
+}
